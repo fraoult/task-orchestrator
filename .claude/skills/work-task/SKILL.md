@@ -43,8 +43,8 @@ cargo test --locked
 ## 4. Hand it to review
 
 1. Commit with a message that names the task, like `Record the claimer in next_task (orch#5)`. Push with `git push -u origin task/orch-<n>`.
-2. Open a PR against `main` with `gh pr create`, titled like the task, with the task id and a short summary in the body. If the PR already exists, push to it and comment there on what changed.
-3. `update_task` with the PR link as `url`.
+2. Open a PR against `main` with `gh pr create`, titled like the task, with the task id and a short summary in the body. If the PR already exists, push to it and comment there on what changed. If `gh` isn't installed or signed in, skip this and use the compare link `https://github.com/fraoult/task-orchestrator/compare/main...task/orch-<n>?expand=1` instead, so the user can open the PR in one click.
+3. `update_task` with the PR link (or the compare link) as `url`.
 4. `add_comment` with what you did, what you tested, anything left open, and how to resume: `cd <worktree path>` then `claude --continue`.
 5. `update_task` to `review`.
 

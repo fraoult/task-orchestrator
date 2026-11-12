@@ -32,6 +32,9 @@ Remove the review worktree when you're done: `git worktree remove ../task-orches
 
 ## 3. Decide
 
+If `gh` isn't installed or signed in, skip the `gh` steps below and put everything in task comments instead.
+
+
 - **Changes needed:** post the findings on the PR with `gh pr review --request-changes`, then `add_comment` on the task with the same points as a short numbered list. Tag it `changes-requested` and move it to `todo`, so the next `work-task` picks it up and continues the same branch.
 - **Ready:** `gh pr review --approve` (or a comment if GitHub refuses approving your own PR), `add_comment` saying it's ready to merge and what you checked, and add the tag `approved`. Leave it in review for the user.
 
