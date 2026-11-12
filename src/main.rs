@@ -1,6 +1,7 @@
 mod export;
 mod home;
 mod mcp;
+mod orchestrator;
 mod service;
 mod share;
 #[cfg(unix)]

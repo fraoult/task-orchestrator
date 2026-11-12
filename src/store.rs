@@ -271,9 +271,15 @@ impl Store {
         }
     }
 
+    /// Kanzo's migrations, then ours from `orchestrator.rs`.
+    pub fn migrate(&self) -> Result<()> {
+        self.migrate_kanzo()?;
+        crate::orchestrator::migrate(&self.conn)
+    }
+
     /// Writes nothing when up to date, so starting `kanzo mcp` for every agent session
     /// costs no disk write.
-    pub fn migrate(&self) -> Result<()> {
+    fn migrate_kanzo(&self) -> Result<()> {
         let meta = |c: &Connection, key: &str| -> rusqlite::Result<Option<usize>> {
             Ok(c.query_row("SELECT value FROM meta WHERE key = ?1", [key], |r| r.get::<_, String>(0))
                 .optional()?
